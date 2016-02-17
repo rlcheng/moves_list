@@ -22,7 +22,7 @@ describe "games", type: :request do
       expect(response).to have_http_status(302)
     end
 
-    describe 'GET /games/new' do
+    describe 'Get /games/new' do
       it "should render the games new page" do
         get "/games/new"
         expect(response).to have_http_status(200)
@@ -53,7 +53,7 @@ describe "games", type: :request do
       end
     end
 
-    describe 'EDIT /game/1' do
+    describe 'Edit /game/1' do
       it "should render edit page" do
         post "/games", game_params
         get "/games/1/edit"
@@ -88,6 +88,5 @@ describe "games", type: :request do
         expect(response).to redirect_to games_path
       end
     end
-
   end
 end
