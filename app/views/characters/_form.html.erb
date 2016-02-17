@@ -1,0 +1,9 @@
+<%= form_for([@game, @game.characters.build]) do |c| %>
+	<p>
+		<%= c.label :name %><br>
+		<%= c.text_field :name %>
+	</p>
+	<p>
+		<%= c.submit %>
+	</p>
+<% end %>
