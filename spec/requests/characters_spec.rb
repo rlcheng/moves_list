@@ -1,12 +1,12 @@
 require 'rails_helper'
 
-describe "games", type: :request do
+describe "characters", type: :request do
   let(:character) { FactoryGirl.create(:character) }
-  let(:character_params) { { character: {name: 'Bob'} } }
-  let(:character_params2) { { character: {name: 'John'} } }
-  let(:bad_character_params) { { character: {name: ''} } }
+  let(:character_params) { { character: { name: 'Bob' } } }
+  let(:character_params2) { { character: { name: 'John' } } }
+  let(:bad_character_params) { { character: { name: '' } } }
   let(:game) { FactoryGirl.create(:game) }
-  let(:game_params) { { game: {title: 'Game'} } }
+  let(:game_params) { { game: { title: 'Game' } } }
   let(:user) { FactoryGirl.create(:user) }
   let(:user_params) { { email: user.email, password: user.password } }  
 
@@ -64,7 +64,7 @@ describe "games", type: :request do
         post "/games/1/characters", character_params2
       end
 
-      it "should destroy a game" do
+      it "should destroy a character" do
         expect{
           delete "/games/1/characters/2"
         }.to change(Character, :count).by(-1)

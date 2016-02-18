@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   resources :users
   resources :sessions
   resources :games do
-    resources :characters
+    resources :characters do
+      resources :moves
+    end
   end
 end

@@ -2,9 +2,9 @@ require 'rails_helper'
 
 describe "games", type: :request do
   let(:game) { FactoryGirl.create(:game) }
-  let(:game_params) { { game: {title: 'Game'} } }
-  let(:game_params2) { { game: {title: 'Game2'} } }
-  let(:bad_game_params) { { game: {title: ''} } }
+  let(:game_params) { { game: { title: 'Game' } } }
+  let(:game_params2) { { game: { title: 'Game2' } } }
+  let(:bad_game_params) { { game: { title: '' } } }
   let(:user) { FactoryGirl.create(:user) }
   let(:user_params) { { email: user.email, password: user.password } }
 
