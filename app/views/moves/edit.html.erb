@@ -1,0 +1,17 @@
+<h1>Editing move</h1>
+
+<%= form_for([@game, @character, @move]) do |m| %>
+	<p>
+		<%= m.label :name %><br>
+		<%= m.text_field :name %>
+	</p>
+	<p>
+		<%= m.label :input %><br>
+		<%= m.text_field :input %>
+	</p>	
+	<p>
+		<%= m.submit %>
+	</p>
+<% end %>
+
+<%= link_to 'Back', game_character_path(@game, @character) %>

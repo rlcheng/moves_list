@@ -1,0 +1,15 @@
+<tr>
+	<td><%= move.name %></td>
+	<td><%= move.input %></td>
+	<td><%= link_to 'Show', [move.character.game, move.character, move] %></td>
+	<% if current_user %>	
+	<td><%= link_to 'Edit', edit_game_character_move_path(
+			move.character.game.id, move.character.id, move.id)%>
+	</td>
+	<td><%= link_to 'Destroy', [move.character.game, move.character, move],
+        	method: :delete,
+        	data: { confirm: 'Are you sure?' } %>	
+	</td>
+	<% end %>
+</tr>
+<br>

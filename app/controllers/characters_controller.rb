@@ -1,10 +1,5 @@
 class CharactersController < ApplicationController
-before_action :authorize, only: [:new, :edit, :update, :destroy]  
-
-  def edit
-    @game = Game.find(params[:game_id])
-    @character = @game.characters.find(params[:id])
-  end
+  before_action :authorize, only: [:new, :edit, :update, :destroy]
 
   def create
     @game = Game.find(params[:game_id])
@@ -13,6 +8,11 @@ before_action :authorize, only: [:new, :edit, :update, :destroy]
   end
 
   def show
+    @game = Game.find(params[:game_id])
+    @character = @game.characters.find(params[:id])
+  end
+
+  def edit
     @game = Game.find(params[:game_id])
     @character = @game.characters.find(params[:id])
   end

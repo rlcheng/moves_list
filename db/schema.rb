@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160216221929) do
+ActiveRecord::Schema.define(version: 20160217230849) do
 
   create_table "characters", force: :cascade do |t|
     t.string   "name"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20160216221929) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "moves", force: :cascade do |t|
+    t.string   "name"
+    t.string   "input"
+    t.integer  "character_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "moves", ["character_id"], name: "index_moves_on_character_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
