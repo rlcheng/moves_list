@@ -1,30 +1,21 @@
 class MovesController < ApplicationController
-  before_action :authorize, only: [:new, :edit, :update, :destroy]
+  before_action :find_game
+  before_action :find_character
+  before_action :find_move, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:create, :edit, :update, :destroy]
 
   def create
-    @game = Game.find(params[:game_id])
-    @character = Character.find(params[:character_id])
     @move = @character.moves.create(move_params)
     redirect_to game_character_path(@game, @character)
   end
 
   def show
-    @game = Game.find(params[:game_id])
-    @character = Character.find(params[:character_id])
-    @move = @character.moves.find(params[:id])
   end
 
   def edit
-    @game = Game.find(params[:game_id])
-    @character = Character.find(params[:character_id])
-    @move = @character.moves.find(params[:id])
   end
 
   def update
-    @game = Game.find(params[:game_id])
-    @character = Character.find(params[:character_id])
-    @move = @character.moves.find(params[:id])
-
     if @move.update(move_params)
       redirect_to game_character_path(@game, @character)
     else
@@ -33,14 +24,23 @@ class MovesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:game_id])
-    @character = Character.find(params[:character_id])
-    @move = @character.moves.find(params[:id])
     @move.destroy
     redirect_to game_character_path(@game, @character)
   end  
 
   private
+    def find_game
+      @game = Game.find(params[:game_id])
+    end
+
+    def find_character
+      @character = Character.find(params[:character_id])
+    end
+
+    def find_move
+      @move = @character.moves.find(params[:id])
+    end
+
     def move_params
       params.require(:move).permit(:name, :input)
     end
