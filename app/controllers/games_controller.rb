@@ -1,12 +1,9 @@
 class GamesController < ApplicationController
-  before_action :authorize, only: [:new, :edit, :update, :destroy]
+  before_action :find_game, only: [:show, :edit, :update, :destroy]
+  before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @game = Game.new
-  end
-
-  def edit
-    @game = Game.find(params[:id])
   end
 
   def create
@@ -20,16 +17,16 @@ class GamesController < ApplicationController
   end
 
   def show
-    @game = Game.find(params[:id])
   end
 
   def index
     @games = Game.all
   end
 
-  def update
-    @game = Game.find(params[:id])
+  def edit
+  end
 
+  def update
     if @game.update(game_params)
       redirect_to @game
     else
@@ -38,13 +35,16 @@ class GamesController < ApplicationController
   end
 
   def destroy
-    @game = Game.find(params[:id])
     @game.destroy
 
     redirect_to games_path
   end
 
   private
+    def find_game
+      @game = Game.find(params[:id])
+    end
+
     def game_params
       params.require(:game).permit(:title)
     end
