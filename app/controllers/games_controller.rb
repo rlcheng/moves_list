@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :find_game, only: [:show, :edit, :update, :destroy]
+  before_action :find_game, only: [:edit, :update, :destroy]
   before_action :authorize, only: [:new, :create, :edit, :update, :destroy]
 
   def new
@@ -10,13 +10,10 @@ class GamesController < ApplicationController
     @game = Game.new(game_params)
 
     if @game.save
-      redirect_to @game
+      redirect_to games_path
     else
       render 'new'
     end
-  end
-
-  def show
   end
 
   def index
@@ -28,7 +25,7 @@ class GamesController < ApplicationController
 
   def update
     if @game.update(game_params)
-      redirect_to @game
+      redirect_to games_path
     else
       render 'edit'
     end

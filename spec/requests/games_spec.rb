@@ -31,25 +31,16 @@ describe "games", type: :request do
     end
 
     describe 'Post create /games' do
-      it "should create a new game and redirect to show game" do
+      it "should create a new game and redirect to index" do
         expect{
           post "/games", game_params
         }.to change(Game, :count).by(1)
-        expect(response).to redirect_to '/games/1'
+        expect(response).to redirect_to '/games'
       end
 
       it "should not create a new game with bad params" do
         post "/games", bad_game_params
         expect(response).to render_template('new')
-      end
-    end
-
-    describe 'Show game' do
-      it "should show game" do
-        post "/games", game_params
-        post "/games", game_params
-        get "/games/2"
-        expect(response).to have_http_status(200)
       end
     end
 
@@ -66,7 +57,7 @@ describe "games", type: :request do
 
       it "should update game" do
         patch "/games/1", game_params2
-        expect(response).to redirect_to '/games/1'
+        expect(response).to redirect_to '/games'
       end
 
       it "should not update with bad params" do

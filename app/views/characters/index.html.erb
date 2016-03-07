@@ -4,10 +4,10 @@
 </p>
 
 <h2>Characters</h2>
-<%= render @game.characters %>
-
+<%= render @characters %>
+<% if current_user %>
 <h2>Add a character:</h2>
 <%= render 'characters/form' %>
+<% end %>
 
-<%= link_to 'Edit', edit_game_path(@game) %>
 <%= link_to 'Back', games_path %>

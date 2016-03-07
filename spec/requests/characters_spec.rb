@@ -15,7 +15,7 @@ describe "characters", type: :request do
       post '/log_in', user_params
       expect(response).to have_http_status(302)
       post "/games", game_params
-      expect(response).to redirect_to '/games/1'
+      expect(response).to redirect_to '/games'
     end
 
     describe "Post create character" do
@@ -23,23 +23,22 @@ describe "characters", type: :request do
         expect{
           post "/games/1/characters", character_params
         }.to change(Character, :count).by(1)
-        expect(response).to redirect_to '/games/1'
+        expect(response).to redirect_to '/games/1/characters'
       end      
     end
 
-    describe 'Show character' do
-      it "should show game" do
-        post "/games/1/characters", character_params
-        post "/games/1/characters", character_params
-        get "/games/1/characters/2"
+    describe "characters index page" do
+      it "should render the games index page" do
+        get "/games/1/characters"
         expect(response).to have_http_status(200)
+        expect(response).to render_template('index')
       end
     end
 
     describe 'Edit character' do
       it "should render edit page for character in game" do
         post "/games/1/characters", character_params
-        get "/games/1/characters/1/edit"
+        get "/characters/1/edit"
         expect(response).to have_http_status(200)
       end
     end
@@ -48,12 +47,12 @@ describe "characters", type: :request do
       before(:each) { post "/games/1/characters", character_params }
       
       it "should update character in game" do
-        patch "/games/1/characters/1", character_params2
-        expect(response).to redirect_to '/games/1'        
+        patch "/characters/1", character_params2
+        expect(response).to redirect_to '/games/1/characters'        
       end
 
       it "should not update with bad params" do
-        patch "/games/1/characters/1", bad_character_params
+        patch "/characters/1", bad_character_params
         expect(response).to render_template 'edit'
       end      
     end
@@ -66,9 +65,9 @@ describe "characters", type: :request do
 
       it "should destroy a character" do
         expect{
-          delete "/games/1/characters/2"
+          delete "/characters/2"
         }.to change(Character, :count).by(-1)
-        expect(response).to redirect_to '/games/1'
+        expect(response).to redirect_to '/games/1/characters'
       end            
     end
   end

@@ -1,6 +1,6 @@
 <h1>Editing move</h1>
 
-<%= form_for([@game, @character, @move]) do |m| %>
+<%= form_for @move do |m| %>
 	<p>
 		<%= m.label :name %><br>
 		<%= m.text_field :name %>
@@ -14,4 +14,4 @@
 	</p>
 <% end %>
 
-<%= link_to 'Back', game_character_path(@game, @character) %>
+<%= link_to 'Back', :back %>
