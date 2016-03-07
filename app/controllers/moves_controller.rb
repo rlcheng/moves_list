@@ -1,15 +1,18 @@
 class MovesController < ApplicationController
-  before_action :find_game
-  before_action :find_character
+  before_action :find_character, only: [:create, :index]
   before_action :find_move, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:create, :edit, :update, :destroy]
 
   def create
     @move = @character.moves.create(move_params)
-    redirect_to game_character_path(@game, @character)
+    redirect_to character_moves_path(@character)
   end
 
   def show
+  end
+
+  def index
+    @moves = @character.moves
   end
 
   def edit
@@ -17,7 +20,7 @@ class MovesController < ApplicationController
 
   def update
     if @move.update(move_params)
-      redirect_to game_character_path(@game, @character)
+      redirect_to character_moves_path(@move.character_id)
     else
       render 'edit'
     end
@@ -25,20 +28,16 @@ class MovesController < ApplicationController
 
   def destroy
     @move.destroy
-    redirect_to game_character_path(@game, @character)
+    redirect_to character_moves_path(@move.character_id)
   end  
 
   private
-    def find_game
-      @game = Game.find(params[:game_id])
-    end
-
     def find_character
       @character = Character.find(params[:character_id])
     end
 
     def find_move
-      @move = @character.moves.find(params[:id])
+      @move = Move.find(params[:id])
     end
 
     def move_params

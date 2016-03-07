@@ -14,62 +14,61 @@ describe "moves", type: :request do
       post '/log_in', user_params
       expect(response).to have_http_status(302)
       post "/games", game_params
-      expect(response).to redirect_to '/games/1'
+      expect(response).to redirect_to '/games'
       post "/games/1/characters", character_params
-      expect(response).to redirect_to '/games/1'
+      expect(response).to redirect_to '/games/1/characters'
     end
 
     describe "Post create move" do
       it "should create a move and refresh page" do
         expect{
-          post "/games/1/characters/1/moves", move_params
+          post "/characters/1/moves", move_params
         }.to change(Move, :count).by(1)
-        expect(response).to redirect_to '/games/1/characters/1'
+        expect(response).to redirect_to '/characters/1/moves'
       end      
     end
 
-    describe 'Show move' do
-      it "should show game" do
-        post "/games/1/characters/1/moves", move_params
-        post "/games/1/characters/1/moves", move_params2
-        get "/games/1/characters/1/moves/2"
+    describe "moves index page" do
+      it "should render the games index page" do
+        get "/characters/1/moves"
         expect(response).to have_http_status(200)
+        expect(response).to render_template('index')
       end
     end
 
     describe 'Edit move' do
       it "should render edit page for character's move in game" do
-        post "/games/1/characters/1/moves", move_params
-        get "/games/1/characters/1/moves/1/edit"
+        post "/characters/1/moves", move_params
+        get "/moves/1/edit"
         expect(response).to have_http_status(200)
       end
     end
 
     describe 'Update move' do
-      before(:each) { post "/games/1/characters/1/moves", move_params }
+      before(:each) { post "/characters/1/moves", move_params }
       
       it "should update character's move in game" do
-        patch "/games/1/characters/1/moves/1", move_params2
-        expect(response).to redirect_to '/games/1/characters/1'        
+        patch "/moves/1", move_params2
+        expect(response).to redirect_to '/characters/1/moves'        
       end
 
       it "should not update with bad params" do
-        patch "/games/1/characters/1/moves/1", bad_move_params
+        patch "/moves/1", bad_move_params
         expect(response).to render_template 'edit'
       end      
     end
 
     describe 'Delete move' do
       before(:each) do
-        post "/games/1/characters/1/moves", move_params
-        post "/games/1/characters/1/moves", move_params2
+        post "/characters/1/moves", move_params
+        post "/characters/1/moves", move_params2
       end
 
       it "should destroy a move" do
         expect{
-          delete "/games/1/characters/1/moves/2"
+          delete "/moves/2"
         }.to change(Move, :count).by(-1)
-        expect(response).to redirect_to '/games/1/characters/1'
+        expect(response).to redirect_to '/characters/1/moves'
       end            
     end
   end

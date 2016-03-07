@@ -8,9 +8,11 @@ Rails.application.routes.draw do
 
   resources :users
   resources :sessions
-  resources :games do
-    resources :characters do
-      resources :moves
+  shallow do
+    resources :games, except: :show do
+      resources :characters, except: [:new, :show] do
+        resources :moves, except: [:new, :show]
+      end
     end
   end
 end

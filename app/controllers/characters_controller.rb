@@ -1,14 +1,18 @@
 class CharactersController < ApplicationController
-  before_action :find_game
+  before_action :find_game, only: [:create, :index]
   before_action :find_character, only: [:show, :edit, :update, :destroy]
   before_action :authorize, only: [:create, :edit, :update, :destroy]
 
   def create
     @character = @game.characters.create(character_params)
-    redirect_to game_path(@game)
+    redirect_to game_characters_path(@game)
   end
 
   def show
+  end
+
+  def index
+    @characters = @game.characters
   end
 
   def edit
@@ -16,7 +20,7 @@ class CharactersController < ApplicationController
 
   def update
     if @character.update(character_params)
-      redirect_to @game
+      redirect_to game_characters_path(@character.game_id)
     else
       render 'edit'
     end
@@ -24,7 +28,7 @@ class CharactersController < ApplicationController
 
   def destroy
     @character.destroy
-    redirect_to game_path(@game)
+    redirect_to game_characters_path(@character.game_id)
   end
 
   private
@@ -33,7 +37,7 @@ class CharactersController < ApplicationController
     end
 
     def find_character
-      @character = @game.characters.find(params[:id]) 
+      @character = Character.find(params[:id]) 
     end
 
     def character_params

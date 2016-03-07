@@ -4,9 +4,9 @@
 </p>
 
 <h2>Moves</h2>
-<%= render @character.moves %>
+<%= render @moves %>
 
 <h2>Add a move:</h2>
 <%= render '/moves/form' %>
 
-<%= link_to 'Back', game_path(@game) %>
+<%= link_to 'Back', :back %>

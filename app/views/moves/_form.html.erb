@@ -1,4 +1,4 @@
-<%= form_for([@game, @character, @character.moves.build]) do |m| %>
+<%= form_for([@character, @character.moves.build]) do |m| %>
 	<p>
 		<%= m.label :name %><br>
 		<%= m.text_field :name %>
