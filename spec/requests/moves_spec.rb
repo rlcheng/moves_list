@@ -7,7 +7,7 @@ describe "moves", type: :request do
   let(:character_params) { { character: { name: 'Dan' } } }
   let(:game_params) { { game: { title: 'Game' } } }
   let(:user) { FactoryGirl.create(:user) }
-  let(:user_params) { { email: user.email, password: user.password } }  
+  let(:user_params) { { email: user.email, password: user.password } }
 
   context "when logged in" do
     before do
@@ -19,13 +19,26 @@ describe "moves", type: :request do
       expect(response).to redirect_to '/games/1/characters'
     end
 
+    describe 'Get /characters/1/moves/new' do
+      it "should render the games new page" do
+        get "/characters/1/moves/new"
+        expect(response).to have_http_status(200)
+        expect(response).to render_template('new')
+      end
+    end
+
     describe "Post create move" do
-      it "should create a move and refresh page" do
+      it "should create a move and redirect to index" do
         expect{
           post "/characters/1/moves", move_params
         }.to change(Move, :count).by(1)
         expect(response).to redirect_to '/characters/1/moves'
-      end      
+      end
+
+      it "should not create a new move with bad params" do
+        post "/characters/1/moves", bad_move_params
+        expect(response).to render_template('new')
+      end
     end
 
     describe "moves index page" do
@@ -49,13 +62,13 @@ describe "moves", type: :request do
       
       it "should update character's move in game" do
         patch "/moves/1", move_params2
-        expect(response).to redirect_to '/characters/1/moves'        
+        expect(response).to redirect_to '/characters/1/moves'
       end
 
       it "should not update with bad params" do
         patch "/moves/1", bad_move_params
         expect(response).to render_template 'edit'
-      end      
+      end
     end
 
     describe 'Delete move' do
@@ -69,7 +82,7 @@ describe "moves", type: :request do
           delete "/moves/2"
         }.to change(Move, :count).by(-1)
         expect(response).to redirect_to '/characters/1/moves'
-      end            
+      end
     end
   end
 end
