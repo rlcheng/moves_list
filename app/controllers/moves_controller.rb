@@ -1,14 +1,19 @@
 class MovesController < ApplicationController
-  before_action :find_character, only: [:create, :index]
-  before_action :find_move, only: [:show, :edit, :update, :destroy]
+  before_action :find_character, only: [:new, :create, :index]
+  before_action :find_move, only: [:edit, :update, :destroy]
   before_action :authorize, only: [:create, :edit, :update, :destroy]
 
-  def create
-    @move = @character.moves.create(move_params)
-    redirect_to character_moves_path(@character)
+  def new
+    @move = @character.moves.build
   end
 
-  def show
+  def create
+    @move = @character.moves.build(move_params)
+    if @move.save
+      redirect_to character_moves_path(@character)
+    else
+      render 'new'
+    end
   end
 
   def index

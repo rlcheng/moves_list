@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get "sign_up", to: "users#new"
-  get "log_in", to: "sessions#new" 
+  get "log_in", to: "sessions#new"
   post "log_in", to: "sessions#create"
   get "log_out", to: "sessions#destroy"
 
@@ -10,8 +10,8 @@ Rails.application.routes.draw do
   resources :sessions
   shallow do
     resources :games, except: :show do
-      resources :characters, except: [:new, :show] do
-        resources :moves, except: [:new, :show]
+      resources :characters, except: :show do
+        resources :moves, except: :show
       end
     end
   end

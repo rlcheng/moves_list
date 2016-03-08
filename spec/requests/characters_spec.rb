@@ -8,7 +8,7 @@ describe "characters", type: :request do
   let(:game) { FactoryGirl.create(:game) }
   let(:game_params) { { game: { title: 'Game' } } }
   let(:user) { FactoryGirl.create(:user) }
-  let(:user_params) { { email: user.email, password: user.password } }  
+  let(:user_params) { { email: user.email, password: user.password } }
 
   context "when logged in" do
     before do
@@ -18,13 +18,26 @@ describe "characters", type: :request do
       expect(response).to redirect_to '/games'
     end
 
+    describe 'Get /games/1/characters/new' do
+      it "should render the games new page" do
+        get "/games/1/characters/new"
+        expect(response).to have_http_status(200)
+        expect(response).to render_template('new')
+      end
+    end
+
     describe "Post create character" do
-      it "should create a character and refresh page" do
+      it "should create a character and redirect to index" do
         expect{
           post "/games/1/characters", character_params
         }.to change(Character, :count).by(1)
         expect(response).to redirect_to '/games/1/characters'
-      end      
+      end
+
+      it "should not create a new character with bad params" do
+        post "/games/1/characters", bad_character_params
+        expect(response).to render_template('new')
+      end
     end
 
     describe "characters index page" do
@@ -48,13 +61,13 @@ describe "characters", type: :request do
       
       it "should update character in game" do
         patch "/characters/1", character_params2
-        expect(response).to redirect_to '/games/1/characters'        
+        expect(response).to redirect_to '/games/1/characters'
       end
 
       it "should not update with bad params" do
         patch "/characters/1", bad_character_params
         expect(response).to render_template 'edit'
-      end      
+      end
     end
 
     describe 'Delete character' do
@@ -68,8 +81,7 @@ describe "characters", type: :request do
           delete "/characters/2"
         }.to change(Character, :count).by(-1)
         expect(response).to redirect_to '/games/1/characters'
-      end            
+      end
     end
   end
-
 end

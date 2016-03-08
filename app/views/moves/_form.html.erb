@@ -1,4 +1,17 @@
 <%= form_for([@character, @character.moves.build]) do |m| %>
+	<% if @move.errors.any? %>
+		<div id="error_explanation">
+			<h2>
+				<%= pluralize(@move.errors.count, "error") %>
+				stopped this game from being saved:
+			</h2>
+			<ul>
+				<% @move.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 	<p>
 		<%= m.label :name %><br>
 		<%= m.text_field :name %>
