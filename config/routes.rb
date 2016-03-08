@@ -4,10 +4,10 @@ Rails.application.routes.draw do
   post "log_in", to: "sessions#create"
   get "log_out", to: "sessions#destroy"
 
-  root :to => "users#new"
+  root :to => "games#index"
 
-  resources :users
-  resources :sessions
+  resources :users, only: [:new, :create]
+  resources :sessions, only: [:new, :create, :destroy]
   shallow do
     resources :games, except: :show do
       resources :characters, except: :show do
