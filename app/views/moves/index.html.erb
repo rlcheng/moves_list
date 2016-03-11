@@ -1,12 +1,10 @@
-<p>
-	<strong>Character:</strong>
-	<%= @character.name %>
-</p>
+<h2><%= @character.name %>'s Moves</h2>
 
-<h2>Moves</h2>
 <%= render @moves %>
 <% if current_user %>
 <%= link_to 'New move', new_character_move_path %>
 <% end %>
 
+<p>
 <%= link_to 'Back', game_characters_path(@character.game_id) %>
+</p>

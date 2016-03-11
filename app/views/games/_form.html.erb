@@ -1,15 +1,15 @@
 <%= form_for @game do |g| %>
 	<% if @game.errors.any? %>
 		<div id="error_explanation">
-			<h2>
+			<div class='alert alert-danger' role='alert'>
 				<%= pluralize(@game.errors.count, "error") %>
 				stopped this game from being saved:
-			</h2>
-			<ul>
-				<% @game.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-				<% end %>
-			</ul>
+				<ul>
+					<% @game.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
 		</div>
 	<% end %>
 

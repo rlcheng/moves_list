@@ -7,6 +7,8 @@ gem 'bcrypt'
 gem 'figaro'
 gem 'rspec_api_documentation'
 
+gem 'bootstrap-sass'
+gem 'sass-rails'
 gem 'jquery-rails'
 gem 'turbolinks'
 

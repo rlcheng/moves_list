@@ -16,6 +16,22 @@ describe "games", type: :request do
     end
   end
 
+  describe "games about page" do
+    it "should render the games about page" do
+      get "/games/about"
+      expect(response).to have_http_status(200)
+      expect(response).to render_template('about')
+    end
+  end
+
+  describe "games help page" do
+    it "should render the games help page" do
+      get "/games/help"
+      expect(response).to have_http_status(200)
+      expect(response).to render_template('help')
+    end
+  end
+
   context "when logged in" do
     before do
       post '/log_in', user_params
