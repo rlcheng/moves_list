@@ -26,7 +26,6 @@ Without logging in one can view a list of all games in the app, each game's char
 Once you log in you can create, edit, or delete.
 
 ###To be implemented
-- **Front end.** Need to make it pretty.
 - **Full delete.** Right now if you delete a game it does not delete any characters associated with the game or those characters' moves. Those data stay in the database and get orphaned. Likewise when you delete a character, their moves stay in the database. These data are not reachable but be best if they are just deleted.
 - **Add a search function.** Need to have a search bar that lets you search for games, characters, or moves.
 - **Add Games via text file upload.** Manually entering sucks. Using the `seeds.rb` works but I'd much rather have the user have the freedom to do so. So need to be able to let users upload a simple text file and have the app parse and put into the database.

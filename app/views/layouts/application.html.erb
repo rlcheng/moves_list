@@ -34,9 +34,12 @@
 </div>
 
 <body>
-
   <% flash.each do |key, value| %>
+    <% if key == "error" %>
+    <div class='alert alert-danger' role='alert'>    
+    <% else %>
     <div class='alert alert-success' role='alert'>
+    <% end %>
       <div class="<%= key %>"><%= value %></div>
     </div>
   <% end %>
@@ -45,4 +48,5 @@
     <%= yield %>
   </div>
 </body>
+
 </html>
