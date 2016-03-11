@@ -23,6 +23,8 @@ describe "user", type: :request do
     post '/users', user: { email: "", password: "", password_confirmation: "" }
     expect(response).to render_template('new')
     expect(response.body).to include("Form is invalid")
+    expect(response.body).to include("Password") #full message is Password can't be blank
+    expect(response.body).to include("Email is invalid")
   end
 
 end
