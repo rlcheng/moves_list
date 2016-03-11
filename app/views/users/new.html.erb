@@ -3,7 +3,7 @@
 <%= form_for @user do |f| %>
   <% if @user.errors.any? %>
     <div class='alert alert-danger' role='alert'>
-      <h3>Form is invalid</h3>
+      Form is invalid
       <ul>
         <% for message in @user.errors.full_messages %>
           <li><%= message %></li>
@@ -13,15 +13,15 @@
   <% end %>
   
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email %><br>
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :password %><br />
+    <%= f.label :password %><br>
     <%= f.password_field :password %>
   </div>
   <div class="field">
-    <%= f.label :password_confirmation %><br />
+    <%= f.label :password_confirmation %><br>
     <%= f.password_field :password_confirmation %>
   </div>
 
