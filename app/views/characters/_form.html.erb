@@ -1,17 +1,18 @@
 <%= form_for([@game, @game.characters.build]) do |c| %>
 	<% if @character.errors.any? %>
 		<div id="error_explanation">
-			<h2>
+			<div class='alert alert-danger' role='alert'>
 				<%= pluralize(@character.errors.count, "error") %>
-				stopped this game from being saved:
-			</h2>
-			<ul>
-				<% @character.errors.full_messages.each do |msg| %>
-					<li><%= msg %></li>
-				<% end %>
-			</ul>
+				stopped this character from being saved:
+				<ul>
+					<% @character.errors.full_messages.each do |msg| %>
+						<li><%= msg %></li>
+					<% end %>
+				</ul>
+			</div>
 		</div>
 	<% end %>
+	
 	<p>
 		<%= c.label :name %><br>
 		<%= c.text_field :name %>

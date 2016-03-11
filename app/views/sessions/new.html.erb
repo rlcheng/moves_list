@@ -1,4 +1,4 @@
-<h1>Log in</h1>
+<h2>Log In</h2>
 
 <%= form_tag sessions_path do %>
   <div class="field">
@@ -9,5 +9,8 @@
     <%= label_tag :password %><br />
     <%= password_field_tag :password %>
   </div>
-  <div class="actions"><%= submit_tag "Log In" %></div>
+
+  <p>
+  	<div class="actions"><%= submit_tag "Log In" %></div>
+  </p>
 <% end %>

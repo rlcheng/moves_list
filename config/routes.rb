@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   get "log_in", to: "sessions#new"
   post "log_in", to: "sessions#create"
   get "log_out", to: "sessions#destroy"
+  get "games/about"
+  get "games/help"
 
   root :to => "games#index"
 

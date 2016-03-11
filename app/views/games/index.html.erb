@@ -1,21 +1,7 @@
-<h1>Listing games</h1>
+<h2>Games</h2>
  
-<table>
-  <tr>
-    <th>Title</th>
-  </tr>
- 
-  <% @games.each do |game| %>
-    <tr>
-      <td><%= link_to "#{game.title}", game_characters_path(game) %></td>
-      <% if current_user %>
-      <td><%= link_to 'Edit', edit_game_path(game) %></td>
-      <td><%= link_to 'Destroy', game_path(game), method: :delete,
-              data: { confirm: 'Are you sure?' } %>
-      </td>
-      <% end %>
-    </tr>
-  <% end %>
-</table>
+<%= render @games %>
 
-<%= link_to 'New game', new_game_path %>
+<% if current_user %>
+<%= link_to 'New Game', new_game_path %>
+<% end %>
