@@ -1,9 +1,9 @@
 <div class='row'>
-	<p class='col-md-3'>
+	<p class='col-md-5 col-xs-5'>
 		<%= link_to "#{character.name}",character_moves_path(character) %>
 	</p>
 	<% if current_user %>
-	<p class='col-md-2'>
+	<p class='col-md-2 col-xs-4'>
 		<%= link_to 'Edit', edit_character_path(character) %>
 		<%= link_to 'Destroy', character_path(character),
         	method: :delete,
