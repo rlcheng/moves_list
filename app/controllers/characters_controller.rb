@@ -17,7 +17,7 @@ class CharactersController < ApplicationController
   end
 
   def index
-    @characters = @game.characters
+    @characters = @game.characters.order(:name)
   end
 
   def edit
