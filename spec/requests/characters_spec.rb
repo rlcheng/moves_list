@@ -1,11 +1,9 @@
 require 'rails_helper'
 
 describe "characters", type: :request do
-  let(:character) { FactoryGirl.create(:character) }
   let(:character_params) { { character: { name: 'Bob' } } }
   let(:character_params2) { { character: { name: 'John' } } }
   let(:bad_character_params) { { character: { name: '' } } }
-  let(:game) { FactoryGirl.create(:game) }
   let(:game_params) { { game: { title: 'Game' } } }
   let(:user) { FactoryGirl.create(:user) }
   let(:user_params) { { email: user.email, password: user.password } }

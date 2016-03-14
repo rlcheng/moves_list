@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 describe "games", type: :request do
-  let(:game) { FactoryGirl.create(:game) }
   let(:game_params) { { game: { title: 'Game' } } }
   let(:game_params2) { { game: { title: 'Game2' } } }
   let(:bad_game_params) { { game: { title: '' } } }
+  let(:character_params) { { character: { name: 'Bob' } } }
+  let(:move_params) { { move: { name: 'Fireball', input: 'QCF+P' } } }
   let(:user) { FactoryGirl.create(:user) }
   let(:user_params) { { email: user.email, password: user.password } }
 
@@ -86,12 +87,30 @@ describe "games", type: :request do
       before(:each) do
         post "/games", game_params
         post "/games", game_params2
+        post "/games/1/characters", character_params
+        post "/games/1/characters", character_params
+        post "/characters/1/moves", move_params
+        post "/characters/1/moves", move_params
       end
 
       it "should destroy a game" do
         expect{
-          delete "/games/2"
+          delete "/games/1"
         }.to change(Game, :count).by(-1)
+        expect(response).to redirect_to games_path
+      end
+
+      it "should destroy a game and associated characters" do
+        expect{
+          delete "/games/1"
+        }.to change(Character, :count).by(-2)
+        expect(response).to redirect_to games_path
+      end
+
+      it "should destroy a game and associated character's moves" do
+        expect{
+          delete "/games/1"
+        }.to change(Move, :count).by(-2)
         expect(response).to redirect_to games_path
       end
     end
