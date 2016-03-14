@@ -17,7 +17,7 @@ class MovesController < ApplicationController
   end
 
   def index
-    @moves = @character.moves
+    @moves = @character.moves.order(:name)
   end
 
   def edit
