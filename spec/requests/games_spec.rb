@@ -5,7 +5,7 @@ describe "games", type: :request do
   let(:game_params2) { { game: { title: 'Game2' } } }
   let(:bad_game_params) { { game: { title: '' } } }
   let(:character_params) { { character: { name: 'Bob' } } }
-  let(:move_params) { { move: { name: 'Fireball', input: 'QCF+P' } } }
+  let(:move_params) { { move: { category: 'Special', name: 'Fireball', input: 'QCF+P' } } }
   let(:user) { FactoryGirl.create(:user) }
   let(:user_params) { { email: user.email, password: user.password } }
 

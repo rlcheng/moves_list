@@ -17,7 +17,7 @@ class MovesController < ApplicationController
   end
 
   def index
-    @moves = @character.moves.order(:name)
+    @moves = @character.moves.order(:name).group_by(&:category)
   end
 
   def edit
@@ -46,6 +46,6 @@ class MovesController < ApplicationController
     end
 
     def move_params
-      params.require(:move).permit(:name, :input)
+      params.require(:move).permit(:category, :name, :input)
     end
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160217230849) do
+ActiveRecord::Schema.define(version: 20160315210219) do
 
   create_table "characters", force: :cascade do |t|
     t.string   "name"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20160217230849) do
     t.integer  "character_id"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "category"
   end
 
   add_index "moves", ["character_id"], name: "index_moves_on_character_id"

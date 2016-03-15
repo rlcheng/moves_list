@@ -1,6 +1,11 @@
 <h2><%= @character.name %>'s Moves</h2>
 
-<%= render @moves %>
+<% @moves.keys.sort.each do |category| %>
+	<h4><%= category %></h4>
+	<% @moves[category].each do |moves| %>
+		<%= render moves %>
+	<% end %>
+<% end %>
 <% if current_user %>
 <%= link_to 'New move', new_character_move_path %>
 <% end %>
