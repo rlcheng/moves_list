@@ -2,6 +2,10 @@
 
 <%= form_for @move do |m| %>
 	<p>
+		<%= m.label :category %><br>
+		<%= m.text_field :category %>
+	</p>
+	<p>
 		<%= m.label :name %><br>
 		<%= m.text_field :name %>
 	</p>

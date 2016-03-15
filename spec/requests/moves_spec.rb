@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 describe "moves", type: :request do
-  let(:move_params) { { move: { name: 'Fireball', input: 'QCF+P' } } }
-  let(:move_params2) { { move: { name: 'Dragon Punch', input: 'FDDF+P' } } }
-  let(:bad_move_params) { { move: { name: '', input: '' } } }
+  let(:move_params) { { move: { category: "Special", name: 'Fireball', input: 'QCF+P' } } }
+  let(:move_params2) { { move: { category: "Special", name: 'Dragon Punch', input: 'FDDF+P' } } }
+  let(:bad_move_params) { { move: { category: '', name: '', input: '' } } }
   let(:character_params) { { character: { name: 'Dan' } } }
   let(:game_params) { { game: { title: 'Game' } } }
   let(:user) { FactoryGirl.create(:user) }
