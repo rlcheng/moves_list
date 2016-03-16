@@ -1,31 +1,3 @@
 <%= form_for([@character, @character.moves.build]) do |m| %>
-	<% if @move.errors.any? %>
-		<div id="error_explanation">
-			<div class='alert alert-danger' role='alert'>
-				<%= pluralize(@move.errors.count, "error") %>
-				stopped this move from being saved:
-				<ul>
-					<% @move.errors.full_messages.each do |msg| %>
-						<li><%= msg %></li>
-					<% end %>
-				</ul>
-			</div>
-		</div>
-	<% end %>
-
-	<p>
-		<%= m.label :category %><br>
-		<%= m.text_field :category %>
-	</p>
-	<p>
-		<%= m.label :name %><br>
-		<%= m.text_field :name %>
-	</p>
-	<p>
-		<%= m.label :input %><br>
-		<%= m.text_field :input %>
-	</p>	
-	<p>
-		<%= m.submit %>
-	</p>
+	<%= render 'field', :m => m %>
 <% end %>

@@ -1,13 +1,8 @@
 <h2>Edit Character</h2>
 
 <%= form_for @character do |c| %>
-	<p>
-		<%= c.label :name %><br>
-		<%= c.text_field :name %>
-	</p>
-	<p>
-		<%= c.submit %>
-	</p>
+	<%= render 'field', :c => c %>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to ' Back', :back,
+	class: "fa fa-arrow-circle-left btn btn-xs btn-primary" %>

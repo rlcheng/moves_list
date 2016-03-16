@@ -1,21 +1,8 @@
 <h2>Edit Move</h2>
 
 <%= form_for @move do |m| %>
-	<p>
-		<%= m.label :category %><br>
-		<%= m.text_field :category %>
-	</p>
-	<p>
-		<%= m.label :name %><br>
-		<%= m.text_field :name %>
-	</p>
-	<p>
-		<%= m.label :input %><br>
-		<%= m.text_field :input %>
-	</p>	
-	<p>
-		<%= m.submit %>
-	</p>
+	<%= render 'field', :m => m %>
 <% end %>
 
-<%= link_to 'Back', :back %>
+<%= link_to ' Back', :back,
+	class: "fa fa-arrow-circle-left btn btn-xs btn-primary" %>
