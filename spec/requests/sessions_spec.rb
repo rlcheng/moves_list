@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "sessions", type: :request do
   let(:user) { FactoryGirl.create(:user) }
-  let(:params) { { email: user.email, password: user.password } }
+  let(:params) { { email: user.email.upcase, password: user.password } }
 
   it "should render the log_in page" do
     get '/log_in'
