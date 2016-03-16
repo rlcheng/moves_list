@@ -1,0 +1,21 @@
+<% if @character.errors.any? %>
+	<div id="error_explanation">
+		<div class='alert alert-danger' role='alert'>
+			<%= pluralize(@character.errors.count, "error") %>
+			stopped this character from being saved:
+			<ul>
+				<% @character.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	</div>
+<% end %>
+
+<p>
+	<%= c.label :name %><br>
+	<%= c.text_field :name %>
+</p>
+<p>
+	<%= c.submit nil, class: "btn btn-xs btn-primary" %>
+</p>

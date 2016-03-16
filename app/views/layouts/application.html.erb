@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>moves_list</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -10,7 +11,7 @@
 
 <div class='navbar navbar-default navbar-fixed-top'>
   <div class='container'>
-    <a class='navbar-brand' href='/'>Move List</a>
+    <a class='fa fa-gamepad navbar-brand' href='/'> Move List</a>
 
     <button type='button' class='navbar-toggle'
             data-toggle='collapse'
@@ -22,13 +23,13 @@
     </button>
 
     <ul class='nav navbar-nav navbar-right collapse navbar-collapse'>
-      <li><%= link_to "About", games_about_path %></li>
-      <li><%= link_to "Help", games_help_path %></li>
+      <li><%= link_to " About", games_about_path, class: "fa fa-info-circle" %></li>
+      <li><%= link_to " Help", games_help_path, class: "fa fa-question-circle" %></li>
       <% if current_user %>
-        <li><%= link_to "Log Out", log_out_path %></li>
+        <li><%= link_to " Log Out", log_out_path, class: "fa fa-sign-out" %></li>
       <% else %>
-        <li><%= link_to "Sign Up", sign_up_path %></li>
-        <li><%= link_to "Log In", log_in_path %></li>
+        <li><%= link_to " Sign Up", sign_up_path, class: "fa fa-user-plus" %></li>
+        <li><%= link_to " Log In", log_in_path, class: "fa fa-sign-in" %></li>
       <% end %>
     </ul>
   </div>
