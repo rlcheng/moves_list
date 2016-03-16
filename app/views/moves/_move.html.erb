@@ -3,10 +3,12 @@
 	<p class='col-md-4 col-xs-6'><%= move.input %></p>
 	<% if current_user %>	
 	<p class='col-md-2 col-xs-12'>
-		<%= link_to 'Edit', edit_move_path(move) %>
+		<%= link_to 'Edit', edit_move_path(move),
+			class: "glyphicon glyphicon-edit btn btn-xs btn-primary" %>
 		<%= link_to 'Destroy', move_path(move),
         	method: :delete,
-        	data: { confirm: 'Are you sure?' } %>	
+        	data: { confirm: 'Are you sure?' },
+        	class: "mega-octicon octicon-sign-in btn btn-xs btn-danger"%>
 	</p>
 	<% end %>
 </div>
