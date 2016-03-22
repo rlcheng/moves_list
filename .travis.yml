@@ -1,5 +1,11 @@
 language: ruby
 rvm:
  - "2.3.0"
+
+services:
+ - elasticsearch
+
+before_script:
+ - sleep 10
 # uncomment this line if your project needs to run something other than `rake`:
 # script: bundle exec rspec spec
