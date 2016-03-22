@@ -1,0 +1,25 @@
+<h2>Games Search</h2>
+ 
+<%= form_for search_path, method: :get do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Go", name: nil %>
+  </p>
+<% end %>
+
+<ul>
+  <% @games.each do |game| %>
+    <li>
+      <p>
+        <%= link_to game.try(:highlight).try(:title) ? game.highlight.title[0].html_safe : game.title,
+          game_characters_path(game._id) %>
+      </p>
+      <% if game.try(:highlight).try(:text) %>
+        <% game.highlight.text.each do |snippet| %>
+          <p><%= snippet.html_safe %>...</p>
+        <% end %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

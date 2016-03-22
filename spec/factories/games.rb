@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :game do
-    title "Game"
+    title "Street Fighter 2"
   end
 
 end
