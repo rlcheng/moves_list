@@ -4,6 +4,8 @@ ruby "2.3.0"
 
 gem 'rails', '4.2.6'
 gem 'bcrypt'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
 gem 'figaro'
 gem 'rspec_api_documentation'
 

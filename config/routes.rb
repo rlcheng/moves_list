@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get "log_out", to: "sessions#destroy"
   get "games/about"
   get "games/help"
+  get "search", to: "search#search"
 
   root :to => "games#index"
 
