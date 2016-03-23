@@ -2,6 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-em {
-  background: yellow;
+.label-highlight {
+  font-size: 100% !important;
+  font-weight: inherit !important;
+  font-style: inherit !important;
+  color: #333 !important;
+  background: #fff401 !important;
 }
