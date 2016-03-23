@@ -2,21 +2,60 @@
 
 <table class='table table-hover'>
   <tbody>
-    <% if @games.empty? %>
+    <% if @games.empty? && @characters.empty? && @moves.empty? %>
     <tr>
       <td>
-        Enter search terms to find matching Games on Move List.
+        Enter search terms to find matching Games, Characters, or Moves on the Move List app.
       </td>
     </tr>
     <% end %>
-    <% @games.each do |game| %>
-      <tr>
-        <td>
-          <%= link_to game.try(:highlight).try(:title) ? 
-            game.highlight.title[0].html_safe : game.title,
-            game_characters_path(game._id) %>
-        </td>
-      </tr>
+    <% if @games.present? %>
+      <% @games.each do |game| %>
+        <tr>
+          <td>
+            Game:
+            <%= link_to game.highlight.title[0].html_safe,
+              game_characters_path(game._id) %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% if @characters.present? %>
+      <% @characters.each do |character| %>
+        <tr>
+          <td>
+            Character:
+            <%= link_to character.highlight.name[0].html_safe,
+              character_moves_path(character._id) %>
+          </td>
+          <td>
+            Game:
+            <% game = Game.find_by id: character.game_id %>
+            <%= link_to game.title, game_characters_path(game) %>
+          </td>
+        </tr>
+      <% end %>
+    <% end %>
+    <% if @moves.present? %>
+      <% @moves.each do |move| %>
+        <tr>
+          <td>
+            Move:
+            <%= move.highlight.name[0].html_safe %>
+            <%= move.input %>
+          </td>
+          <td>
+            Character:
+            <% character = Character.find_by id: move.character_id %>
+            <%= link_to character.name, character_moves_path(character) %>
+          </td>
+          <td>
+            Game:
+            <% game = Game.find_by id: character.game_id %>
+            <%= link_to game.title, game_characters_path(game) %>
+          </td>
+        </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
