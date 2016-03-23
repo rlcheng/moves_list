@@ -89,3 +89,12 @@ $dropDown       : false;
         color: $colHighlight;
         background-color: $bgHighlight; }}}
 }
+/* end of TWBSColor generated code */
+
+.table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
+  background-color: $bgHighlight;
+}
+
+.table th, .table td { 
+     border-top: none !important; 
+ }

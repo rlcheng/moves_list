@@ -22,7 +22,7 @@ module Searchable
             }
           },
           highlight: {
-            pre_tags: ['<em>'],
+            pre_tags: ['<em class="label label-highlight">'],
             post_tags: ['</em>'],
             fields: {
               title: {}
