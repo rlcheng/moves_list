@@ -1,6 +1,6 @@
 <div class='row'>
 	<p class='col-md-5 col-xs-7'>
-		<%= link_to "#{character.name}",character_moves_path(character) %>
+		<%= link_to character.name,character_moves_path(character) %>
 	</p>
 	<% if current_user %>
 	<p class='col-md-3 col-xs-5'>

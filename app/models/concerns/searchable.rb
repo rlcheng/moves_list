@@ -7,7 +7,8 @@ module Searchable
 
     settings index: { number_of_shards: 1 } do
       mappings dynamic: 'false' do
-        indexes :title, analyzer: 'english', index_options: 'offsets'
+        indexes :title, analyzer: 'english'
+        indexes :name, analyzer: 'english'
       end
     end
 
@@ -18,14 +19,15 @@ module Searchable
             multi_match: {
               query: query,
               fuzziness: 'auto',
-              fields: ['title']
+              fields: ['title', 'name']
             }
           },
           highlight: {
             pre_tags: ['<em class="label label-highlight">'],
             post_tags: ['</em>'],
             fields: {
-              title: {}
+              title: {},
+              name: {}
             }
           }
         }
