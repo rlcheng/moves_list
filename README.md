@@ -14,7 +14,9 @@ Without logging in one can view a list of all games in the app, each game's char
 
 Once you log in you can create, edit, or delete.
 
-App is searchable too. Right now it's limited to only searching Game titles.
+This app is made to be desktop browser, tablet, and phone friendly. When on the tablet or phone, the navbar items will be in a drop down menu.
+
+App is searchable and you can search for Game, Character, and/or Move. If the search query exists in all models, it will be displayed in the following order: Game, Character, and then Move. For any Game query result, it will display the Game title with the query highlighted and the whole text as a link to Game's characters index. For any Character query result, it will display the Character name with query highlighted and whole text as a link to Character's moves index. It will also have a link to the associated Game characters index. For any Move query result, it will display the name of the move with query highlighted along with the move input/motion. It will also have the associated Character name with link to its moves index, and the link to the associated Game characters index.
 
 ###To install
 Make sure you have ElasticSearch installed. If you are on a Mac, use Homebrew: 
@@ -46,3 +48,5 @@ rake db:migrate
 rake db:seed
 rails s
 ```
+
+If you want to see how well the app displays on a tablet or phone, instead of launching the app via ```rails s``` you can launch it via ```rails s -b 0.0.0.0``` and from the tablet/phone navigate to the server's local network ip address:3000, something like this on the tablet/phone's browser: ```192.168.1.100:3000```
