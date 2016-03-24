@@ -5,7 +5,7 @@
     <% if @games.empty? && @characters.empty? %>
     <tr>
       <td>
-        Enter search terms to find matching Games, Characters, or Moves on the Move List app.
+        Enter search terms to find matching Games or Characters on the Move List app.
       </td>
     </tr>
     <% end %>
@@ -38,6 +38,3 @@
     <% end %>
   </tbody>
 </table>
-
-<%= link_to ' Back', games_path,
-  class: "fa fa-arrow-circle-left btn btn-xs btn-primary" %>
