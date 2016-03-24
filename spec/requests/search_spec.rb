@@ -8,10 +8,7 @@ describe "search", type: :request do
       Game.__elasticsearch__.refresh_index!
       character = Character.create(name: "Ryu", game_id: 1)
       character.__elasticsearch__.index_document
-      Character.__elasticsearch__.refresh_index!
-      move = Move.create(name: "Hadoken", input: "QCF+P", character_id: 1)
-      move.__elasticsearch__.index_document
-      Move.__elasticsearch__.refresh_index!            
+      Character.__elasticsearch__.refresh_index!        
     end
 
     describe 'Get /search' do
@@ -41,13 +38,6 @@ describe "search", type: :request do
         expect(response).to have_http_status(200)
         expect(response).to render_template('search')
         expect(response.body).to include("Ryu")
-      end
-
-      it "should find a move", :elasticsearch do
-        get "/search?utf8=%E2%9C%93&q=hadoken"
-        expect(response).to have_http_status(200)
-        expect(response).to render_template('search')
-        expect(response.body).to include("Hadoken")
       end
     end
   end
