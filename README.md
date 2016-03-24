@@ -5,6 +5,9 @@
 [![Coverage Status](https://coveralls.io/repos/github/rlcheng/moves_list/badge.svg?branch=master)](https://coveralls.io/github/rlcheng/moves_list?branch=master)
 [![Build Status](https://travis-ci.org/rlcheng/moves_list.svg?branch=master)](https://travis-ci.org/rlcheng/moves_list)
 
+###Production URL
+https://moves-list-app.herokuapp.com
+
 ###About
 I like video games, particularly fighting games, but I have a lot of games and can't seem to remember the moves for them all. I have a lot of old/vintage video game systems that do not have built in moves lists. So I built an app to help me organize moves list for various fighting games.
 
@@ -16,7 +19,9 @@ Once you log in you can create, edit, or delete.
 
 This app is made to be desktop browser, tablet, and phone friendly. When on the tablet or phone, the navbar items will be in a drop down menu.
 
-App is searchable and you can search for Game, Character, and/or Move. If the search query exists in all models, it will be displayed in the following order: Game, Character, and then Move. For any Game query result, it will display the Game title with the query highlighted and the whole text as a link to Game's characters index. For any Character query result, it will display the Character name with query highlighted and whole text as a link to Character's moves index. It will also have a link to the associated Game characters index. For any Move query result, it will display the name of the move with query highlighted along with the move input/motion. It will also have the associated Character name with link to its moves index, and the link to the associated Game characters index.
+App is searchable and you can search for Game or Character. If the search query exists in all models, it will be displayed in the following order: Game, Character, and then Move. For any Game query result, it will display the Game title with the query highlighted and the whole text as a link to Game's characters index. For any Character query result, it will display the Character name with query highlighted and whole text as a link to Character's moves index. It will also have a link to the associated Game characters index.
+
+During preproduction there was the ability to search for Move, but because for production I am using Heroku with add-on SearchBox Elasticsearch, at the free tier SearchBox only allows me to have 2 indices. With Move it would have been 3 indices and it caused the server to crash due to that limitation. Sacrifices had to be made.. =(
 
 ###To install
 Make sure you have ElasticSearch installed. If you are on a Mac, use Homebrew: 
