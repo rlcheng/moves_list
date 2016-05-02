@@ -48,9 +48,7 @@ Make sure you have the correct Ruby version. Check .ruby-version at root of the 
 
 ```sh
 bundle install
-rake db:create
-rake db:migrate
-rake db:seed
+rake db:setup
 rails s
 ```
 
