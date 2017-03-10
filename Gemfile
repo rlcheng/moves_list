@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby "2.3.0"
 
-gem 'rails', '4.2.6'
+gem 'rails', '5.0.0'
 gem 'bcrypt'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
@@ -27,13 +27,13 @@ end
 group :test do
   gem 'coveralls', :require => false
   gem 'factory_girl_rails'
-  gem 'rspec-rails', '~> 3.0'
+  gem 'rspec-rails', '~> 3.5.0'
+  gem 'rails-controller-testing'
   gem 'simplecov', :require => false
 end
 
 group :production do
   gem 'pg'
   gem 'puma'
-  gem 'rails_12factor'
   gem 'uglifier'
 end

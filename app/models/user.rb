@@ -1,4 +1,4 @@
-class User < ActiveRecord::Base
+class User < ApplicationRecord
   has_secure_password
   before_validation :downcase_email
   validates_uniqueness_of :email
