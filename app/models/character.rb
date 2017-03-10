@@ -1,4 +1,4 @@
-class Character < ActiveRecord::Base
+class Character < ApplicationRecord
   include Searchable
   belongs_to :game
   has_many :moves, dependent: :destroy

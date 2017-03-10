@@ -1,6 +1,6 @@
 require 'elasticsearch/model'
 
-class Game < ActiveRecord::Base
+class Game < ApplicationRecord
   include Searchable
   has_many :characters, dependent: :destroy
   validates :title, presence: true, length: { minimum: 2 }

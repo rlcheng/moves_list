@@ -24,7 +24,7 @@ App is searchable and you can search for Game or Character. If the search query 
 During preproduction there was the ability to search for Move, but because for production I am using Heroku with add-on SearchBox Elasticsearch, at the free tier SearchBox only allows me to have 2 indices. With Move it would have been 3 indices and it caused the server to crash due to that limitation. Sacrifices had to be made.. =(
 
 ###To install
-Make sure you have ElasticSearch installed. If you are on a Mac, use Homebrew: 
+Make sure you have ElasticSearch installed. If you are on a Mac, use Homebrew:
 ```sh
 $ brew install elasticsearch
 ```
@@ -53,3 +53,6 @@ rails s
 ```
 
 If you want to see how well the app displays on a tablet or phone, instead of launching the app via ```rails s``` you can launch it via ```rails s -b 0.0.0.0``` and from the tablet/phone navigate to the server's local network ip address:3000, something like this on the tablet/phone's browser: ```192.168.1.100:3000```
+
+###To run tests
+From the root of the project in console run: `$ rspec spec`.
