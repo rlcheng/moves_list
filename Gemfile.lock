@@ -107,7 +107,7 @@ GEM
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
     pg (0.20.0)
-    puma (3.8.1)
+    puma (3.8.2)
     rack (2.0.1)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -197,7 +197,7 @@ GEM
     turbolinks-source (5.0.0)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
-    uglifier (3.1.7)
+    uglifier (3.1.8)
       execjs (>= 0.3.0, < 3)
     websocket-driver (0.6.5)
       websocket-extensions (>= 0.1.0)
@@ -230,5 +230,8 @@ DEPENDENCIES
   turbolinks
   uglifier
 
+RUBY VERSION
+   ruby 2.3.0p0
+
 BUNDLED WITH
-   1.14.3
+   1.14.6
