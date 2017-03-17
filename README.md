@@ -1,14 +1,14 @@
-##Moves List app Readme
+## Moves List app Readme
 
 [![Code Climate](https://codeclimate.com/github/rlcheng/moves_list/badges/gpa.svg)](https://codeclimate.com/github/rlcheng/moves_list)
 [![Dependency Status](https://gemnasium.com/rlcheng/moves_list.svg)](https://gemnasium.com/rlcheng/moves_list)
 [![Coverage Status](https://coveralls.io/repos/github/rlcheng/moves_list/badge.svg?branch=master)](https://coveralls.io/github/rlcheng/moves_list?branch=master)
 [![Build Status](https://travis-ci.org/rlcheng/moves_list.svg?branch=master)](https://travis-ci.org/rlcheng/moves_list)
 
-###Production URL
+### Production URL
 https://moves-list-app.herokuapp.com
 
-###About
+### About
 I like video games, particularly fighting games, but I have a lot of games and can't seem to remember the moves for them all. I have a lot of old/vintage video game systems that do not have built in moves lists. So I built an app to help me organize moves list for various fighting games.
 
 The layout of the models in the app is simple. There are many games. Each game has many characters. Each character has many moves.
@@ -23,7 +23,7 @@ App is searchable and you can search for Game or Character. If the search query 
 
 During preproduction there was the ability to search for Move, but because for production I am using Heroku with add-on SearchBox Elasticsearch, at the free tier SearchBox only allows me to have 2 indices. With Move it would have been 3 indices and it caused the server to crash due to that limitation. Sacrifices had to be made.. =(
 
-###To install
+### To install
 Make sure you have ElasticSearch installed. If you are on a Mac, use Homebrew:
 ```sh
 $ brew install elasticsearch
@@ -54,5 +54,5 @@ rails s
 
 If you want to see how well the app displays on a tablet or phone, instead of launching the app via ```rails s``` you can launch it via ```rails s -b 0.0.0.0``` and from the tablet/phone navigate to the server's local network ip address:3000, something like this on the tablet/phone's browser: ```192.168.1.100:3000```
 
-###To run tests
+### To run tests
 From the root of the project in console run: `$ rspec spec`.
